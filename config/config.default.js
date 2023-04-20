@@ -28,9 +28,12 @@ module.exports = appInfo => {
   };
 
   // add your middleware config here
-  config.middleware = [ 'robot' ];
+  config.middleware = [ 'robot', 'errorHandler' ];
   config.robot = {
     ua: [ /Baiduspider/i ],
+  };
+  config.errorHandler = {
+    match: '/api',
   };
 
   // add your user config here
