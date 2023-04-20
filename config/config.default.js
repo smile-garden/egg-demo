@@ -15,6 +15,12 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1681542984950_8139';
 
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  };
+
   config.view = {
     defaultViewEngine: 'nunjucks',
     mapping: {
