@@ -21,11 +21,22 @@ module.exports = appInfo => {
     },
   };
 
+  config.static = {
+    prefix: '/assets/',
+  };
+
   config.view = {
     defaultViewEngine: 'nunjucks',
     mapping: {
       '.tpl': 'nunjucks',
     },
+  };
+
+  config.session = {
+    key: 'ONE_SMILE',
+    httpOnly: true,
+    maxAge: 1000 * 10,
+    renew: true,
   };
 
   config.news = {
@@ -34,7 +45,11 @@ module.exports = appInfo => {
   };
 
   // add your middleware config here
-  config.middleware = [ 'robot', 'errorHandler' ];
+  config.middleware = [
+    'robot',
+    // 'counter',
+    'errorHandler',
+  ];
   config.robot = {
     ua: [ /Baiduspider/i ],
   };

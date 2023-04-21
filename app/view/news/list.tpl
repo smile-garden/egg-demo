@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>Hacker News</title>
+    <link rel="stylesheet" href="assets/css/base.css">
   </head>
 
   <body>
