@@ -1,4 +1,4 @@
-module.exports = options => {
+module.exports = () => {
   return async (ctx, next) => {
     if (ctx.session.counter) {
       ctx.session.counter++;

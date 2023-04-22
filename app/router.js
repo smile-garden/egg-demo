@@ -5,9 +5,10 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  const counter = app.middleware.counter();
+  // const counter = app.middleware.counter(); // 路由中间件
   router.get('/', controller.home.index);
-  router.get('/list', counter, controller.home.list);
+  // router.get('/list', counter, controller.home.list);
+  router.get('/list', controller.home.list);
   router.get('/detail/:id/:tag', controller.home.detail);
   router.post('/add', controller.home.add);
   router.post('/json', controller.home.json);

@@ -4,17 +4,19 @@ const { Controller } = require('egg');
 
 class CookieController extends Controller {
   async index() {
-    const { ctx } = this;
+    const { ctx, app } = this;
     const { userName: name, counter } = ctx.session;
-    await ctx.render('cookie.tpl', { title: 'cookie page', name, counter });
+    await ctx.render('cookie.tpl', { title: 'cookie page', name, counter, nowTime: app.timeProp });
   }
 
   async add() {
     const { ctx } = this;
     ctx.cookies.set('cookie', 'demo', {
       maxAge: 1000 * 60,
+      encrypt: true,
       httpOnly: false,
     });
+    ctx.response.token = 'set token';
     ctx.session.userName = 'one smile (一笑)';
     ctx.body = {
       status: 200,

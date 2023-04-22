@@ -47,7 +47,7 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [
     'robot',
-    // 'counter',
+    'counter',
     'errorHandler',
   ];
   config.robot = {

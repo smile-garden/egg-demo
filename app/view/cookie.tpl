@@ -13,6 +13,7 @@
   <button onclick="del()">Del cookie</button>
   <h3>{{ name }}</h3>
   <h3>{{ counter }}</h3>
+  <h3>{{ nowTime }}</h3>
 
   <script>
     function add() {
