@@ -16,7 +16,7 @@ class GetTime extends Subscription {
   }
 
   async subscribe() {
-    console.log(Date.now());
+    // console.log(Date.now());
   }
 }
 
