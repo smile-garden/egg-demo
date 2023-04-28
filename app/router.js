@@ -20,5 +20,12 @@ module.exports = app => {
   router.post('/cookie/update', controller.cookie.update);
   router.post('/cookie/del', controller.cookie.del);
 
-  app.router.resources('topics', '/api/v2/topics', app.controller.topics);
+  router.post('/work', controller.work.index);
+
+  router.get('/user/add', controller.user.add);
+  router.get('/user/delete', controller.user.delete);
+  router.get('/user/update', controller.user.update);
+  router.get('/user/get', controller.user.get);
+
+  router.resources('topics', '/api/v2/topics', controller.topics);
 };

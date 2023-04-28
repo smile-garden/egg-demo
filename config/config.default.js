@@ -62,6 +62,32 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  config.mongoose = {
+    /* client: {
+      url: 'mongodb://smile:123456@127.0.0.1:27017/company',
+      options: {
+        useUnifiedTopology: true,
+      },
+      // mongoose global plugins, expected a function or an array of function and options
+      // plugins: [createdPlugin, [updatedPlugin, pluginOptions]],
+    }, */
+    clients: {
+      company: {
+        url: 'mongodb://smile:123456@127.0.0.1:27017/company',
+        options: {
+          useUnifiedTopology: true,
+        },
+      },
+      demo: {
+        url: 'mongodb://demouser:123456@127.0.0.1:27017/demo',
+        options: {
+          useUnifiedTopology: true,
+        },
+      },
+    },
+    plugins: [],
+  };
+
   return {
     ...config,
     ...userConfig,
