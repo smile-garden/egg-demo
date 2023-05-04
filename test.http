@@ -11,3 +11,12 @@ Content-Type: application/json
 {
   "name": "smile json"
 }
+
+###
+POST http://127.0.0.1:7001/user/login 
+Content-Type: application/json
+
+{
+  "userName": "一笑343a23_",
+  "password": "2343a23_"
+}

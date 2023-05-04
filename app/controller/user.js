@@ -3,6 +3,27 @@
 const { Controller } = require('egg');
 const id = '644b9b80fcafe45ec0472e95';
 
+const createRule = {
+  userName: {
+    type: 'string',
+    min: 5,
+    max: 20,
+    format: /^[\u4e00-\u9fa5A-Za-z0-9_]{5,20}$/,
+  },
+  password: {
+    type: 'password',
+    min: 6,
+    max: 20,
+    format: /^[A-Za-z0-9_]{6,20}$/,
+  },
+};
+
+const userInfo = {
+  userName: 'name0',
+  password: '1234560',
+};
+
+
 class UserController extends Controller {
   async add() {
     const { ctx } = this;
@@ -26,8 +47,14 @@ class UserController extends Controller {
   }
   async login() {
     const { ctx } = this;
-    const res = await ctx.service.user.add({ userName: 'name1', password: '1234456' });
-    ctx.body = JSON.stringify(res);
+    ctx.validate(createRule, userInfo);
+    const res = await ctx.service.user.login(userInfo);
+    console.log(res, 'login');
+    ctx.body = res;
+  }
+  async logout() {
+    const { ctx } = this;
+    ctx.body = '退出';
   }
 }
 

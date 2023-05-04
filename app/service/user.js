@@ -4,10 +4,11 @@ class UserService extends Service {
   async add() {
     const { ctx } = this;
     const len = await ctx.model.User.count();
+    const password = await ctx.helper.genSaltPassword('123456' + len);
     const res = await ctx.model.User.create({
       id: len,
       userName: 'name' + len,
-      password: '1234456',
+      password,
     });
     return res;
   }
@@ -29,9 +30,20 @@ class UserService extends Service {
     return res;
   }
   async login(data) {
-    const { ctx } = this;
-    const res = await ctx.model.User.create(data);
-    return res;
+    const { ctx, app } = this;
+    const res = await ctx.model.User.findOne({ userName: data.userName });
+    if (!res) {
+      return '用户不存在';
+    }
+    const isMatch = await ctx.helper.comparePassword(data.password, res.password);
+    const token = app.jwt.sign({ ...res }, app.config.jwt.secret, {
+      expiresIn: '1h',
+    });
+    ctx.cookies.set('token', token, {
+      maxAge: 86400000,
+      httpOnly: true,
+    });
+    return isMatch ? '登录成功' : '用户名或密码错误';
   }
 }
 

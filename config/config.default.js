@@ -57,11 +57,6 @@ module.exports = appInfo => {
     match: '/api',
   };
 
-  // add your user config here
-  const userConfig = {
-    // myAppName: 'egg',
-  };
-
   config.mongoose = {
     /* client: {
       url: 'mongodb://smile:123456@127.0.0.1:27017/company',
@@ -86,6 +81,20 @@ module.exports = appInfo => {
       },
     },
     plugins: [],
+  };
+
+  config.jwt = {
+    secret: '615243',
+    enable: false, // 默认 false true 对所有请求进行自动校验
+    // match: /^\/api/,
+    sign: {
+      expiresIn: 10,
+    },
+  };
+
+  // add your user config here
+  const userConfig = {
+    // myAppName: 'egg',
   };
 
   return {
