@@ -1,5 +1,5 @@
 // demo 数据库
-module.exports = app => {
+/* module.exports = app => {
   const { mongoose: { Schema }, mongooseDB } = app;
   const demo = mongooseDB.get('demo');
 
@@ -13,3 +13,4 @@ module.exports = app => {
 
   return demo.model('One', oneSchema);
 };
+ */

@@ -68,17 +68,23 @@ module.exports = appInfo => {
     }, */
     clients: {
       company: {
+        url: 'mongodb://smile:123456@192.168.27.68:27017/company',
+        options: {
+          useUnifiedTopology: true,
+        },
+      },
+      /* company: {
         url: 'mongodb://smile:123456@127.0.0.1:27017/company',
         options: {
           useUnifiedTopology: true,
         },
-      },
-      demo: {
+      }, */
+      /* demo: {
         url: 'mongodb://demouser:123456@127.0.0.1:27017/demo',
         options: {
           useUnifiedTopology: true,
         },
-      },
+      }, */
     },
     plugins: [],
   };
