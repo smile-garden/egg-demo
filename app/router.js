@@ -30,4 +30,6 @@ module.exports = app => {
   router.get('/user/get', controller.user.get);
 
   router.resources('topics', '/api/v2/topics', controller.topics);
+
+  router.get('/api', controller.api.index);
 };
